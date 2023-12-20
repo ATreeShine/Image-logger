@@ -22,7 +22,7 @@ from PIL import Image
 ```
 ## Creating the ImageLogger
 Next, create the ImageLogger class:
-```
+```python
 class ImageLogger(logging.Logger):
     def makeRecord(self, name, level, fn, lno, msg, args, exc_info, func=None, extra=None):
         if isinstance(msg, Image.Image):
@@ -31,10 +31,14 @@ class ImageLogger(logging.Logger):
 ```
 ## Using the ImageLogger
 To use the ImageLogger, you need to set it as the logger class and then get a logger instance:
-```logging.setLoggerClass(ImageLogger)
+```python
+logging.setLoggerClass(ImageLogger)
 logger = logging.getLogger('image_logger')
 ```
 ## Logging an Image
 To log an image, simply pass an instance of PIL.Image.Image to any of the logger's methods, like warning:
-```img = Image.new('RGB', (60, 30), color = 'red')
-logger.warning(img)```
+```python
+img = Image.new('RGB', (60, 30), color = 'red')
+logger.warning(img)
+```
+This will save the image to a file named 'image_logger.png'.
